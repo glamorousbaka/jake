@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>	</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+	<div class="game">
+		<h1 class="text-center">POINTS</h1>
+		<h1 class="points text-center">0</h1>
+		<div class="container">
+			<div class="row">
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jakethedog w-75" src="jake.png" alt="" style="display: none">
+					<img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+				</div>
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jakethedog" src="jake.png"  alt="" style="display: none">
+					<img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+				</div>
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jakethedog" src="jake.png"  alt="" style="display: none">
+					<img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+				</div>
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jakethedog" src="jake.png"  alt="" style="display: none">
+					<img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jakethedog" src="jake.png" alt="" style="display: none">
+					<img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+				</div>
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jakethedog" src="jake.png"  alt="" style="display: none">
+					<img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+				</div>
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jakethedog" src="jake.png"  alt="" style="display: none">
+					<img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+				</div>
+				<div class="col-3 border" style="height: 300px; background: #fbbb11">
+					<img class="jakethedog" src="jake.png"  alt="" style="display: none">
+					<img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tikrasavchik" style="position: absolute; margin-top: -400px; margin-left: 570px; background-color: red; height: 200px; width: 400px; opacity: 0">
+		<h1 style="margin-top: 50px; margin-left: 70px">ТЫ ВЫИГРАЛ</h1>
+	</div>
+	<div class="tinekrasavchik" style="position: absolute; margin-top: -400px; margin-left: 570px; background-color: red; height: 200px; width: 400px; opacity: 0">
+		<h1 style="margin-top: 50px; margin-left: 70px">ТЫ ПРОИГРАЛ</h1>
+	</div>
+
+	<script>
+		let jake = document.querySelectorAll('.jakethedog')
+		let king = document.querySelectorAll('.iceking')
+		let score = 0
+		let points = document.querySelector('.points')
+		let interv = function(){
+			let rand = Math.random()*7
+			let round = Math.round(rand) 
+			jake[round].style.display = 'block'
+			
+			let proverka = function() {
+				jake[round].style.display = 'none'
+			}
+		setTimeout(proverka,500)
+}
+		let jakkk = setInterval(interv,1000)
+
+		let interv2 = function(){
+					let rand = Math.random()*7
+					let round = Math.round(rand) 
+					king[round].style.display = 'block'
+					
+					let proverka2 = function() {
+						king[round].style.display = 'none'
+					}
+				setTimeout(proverka2,500)
+		}
+				let kingg = setInterval(interv2,1000)
+				
+		for(let i = 0; i<8; i = i+1){
+			jake[i].onclick = function(){
+				score = score + 1
+				jake[i].style.display = 'none'
+				points.innerHTML = score
+			}
+		}
+		for(let i = 0; i<8; i = i+1){
+			king[i].onclick = function(){
+				score = score - 10
+				king[i].style.display = 'none'
+				points.innerHTML = score
+			}
+		}
+		let alertt = function(){
+			if(score>=1) {
+				let elem = document.querySelector('.tikrasavchik')
+				elem.style.opacity = '1'
+				elem.style.marginTop = '-500px'
+				elem.style.transition = '1s'
+			
+			} 
+			else{
+				let elem2 = document.querySelector('.tinekrasavchik')
+				elem2.style.opacity = '1'
+				elem2.style.marginTop = '-500px'
+				elem2.style.transition = '1s'
+			}
+			clearInterval(jakkk)
+			clearInterval(kingg)
+		}
+		setTimeout(alertt,10000)
+
+	</script>
+</body>
+</html>
